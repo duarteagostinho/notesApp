@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/notepads'
+
+id = ARGV[0]
+
+if id.nil? || id.strip.empty?
+  warn 'Usage: notepad <id>'
+  exit 1
+end
+
+begin
+  client = Notepads::Client.new
+  notepad = client.read(id)
+  puts "##{notepad['id']} #{notepad['title']}"
+  puts notepad['content']
+rescue StandardError => e
+  warn e.message
+  exit 1
+end
