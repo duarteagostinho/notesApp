@@ -5,7 +5,6 @@ Full-stack notes app with a React frontend, FastAPI backend, PostgreSQL database
 ## Live Demo
 
 - Web app: http://16.170.224.183
-- API: http://16.170.224.183/api
 
 ## Overview
 
