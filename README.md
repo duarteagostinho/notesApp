@@ -2,6 +2,11 @@
 
 Full-stack notes app with a React frontend, FastAPI backend, PostgreSQL database, Ruby CLI, Docker, and GitHub Actions deployment to AWS EC2.
 
+## Live Demo
+
+- Web app: http://16.170.224.183
+- API: http://16.170.224.183/api
+
 ## Overview
 
 This project lets you create, list, and read notepads through a web UI and a CLI.
