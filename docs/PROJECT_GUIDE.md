@@ -219,7 +219,7 @@ Builds the frontend dev image.
 ### `project/frontend/Dockerfile.prod`
 Builds the frontend production image.
 
-### `project/infra/docker-compose.yml`
+### `project/infra/docker compose.yml`
 Local development stack.
 
 Services:
@@ -227,7 +227,7 @@ Services:
 - `backend`
 - `frontend`
 
-### `project/infra/docker-compose.prod.yml`
+### `project/infra/docker compose.prod.yml`
 Production stack for EC2.
 
 Differences from dev:
