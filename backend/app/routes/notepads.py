@@ -24,3 +24,13 @@ def get_notepad_endpoint(notepad_id: int, db: Session = Depends(get_db)) -> Note
     if item is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Notepad not found")
     return item
+
+
+@router.delete("/{notepad_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_notepad_endpoint(notepad_id: int, db: Session = Depends(get_db)) -> None:
+    item = get_notepad(db, notepad_id)
+    if item is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Notepad not found")
+
+    db.delete(item)
+    db.commit()

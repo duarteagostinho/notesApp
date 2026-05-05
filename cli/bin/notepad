@@ -2,18 +2,48 @@
 
 require_relative '../lib/notepads'
 
-id = ARGV[0]
+command = ARGV[0]
 
-if id.nil? || id.strip.empty?
-  warn 'Usage: notepad <id>'
+if command.nil? || command.strip.empty?
+  warn 'Usage: notepad list | notepad <id> | notepad create | notepad delete <id>'
   exit 1
 end
 
 begin
   client = Notepads::Client.new
-  notepad = client.read(id)
-  puts "##{notepad['id']} #{notepad['title']}"
-  puts notepad['content']
+  case command
+  when 'list'
+    notepads = client.list
+
+    notepads.each do |notepad|
+      puts "##{notepad['id']} #{notepad['title']}"
+    end
+  when 'create'
+    title = ARGV[1]
+    content = ARGV[2]
+
+    if title.nil? || title.empty? || content.nil? || content.empty?
+      warn 'Usage: notepad create "Title" "Content"'
+      exit 1
+    end
+
+    notepad = client.create(title, content)
+    puts "Created ##{notepad['id']} #{notepad['title']}"
+  when 'delete'
+    id = ARGV[1]
+
+    if id.nil? || id.strip.empty?
+      warn 'Usage: notepad delete <id>'
+      exit 1
+    end
+
+    client.delete(id)
+    puts "Deleted ##{id}"
+  else
+    notepad = client.read(command)
+    puts "##{notepad['id']} #{notepad['title']}"
+    puts notepad['content']
+  end
 rescue StandardError => e
   warn e.message
   exit 1

@@ -1,3 +1,7 @@
 .venv
 *.db
 node_modules
+__pycache__/
+*.pyc
+*.gem
+cli/bin/notepad

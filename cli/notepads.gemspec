@@ -7,5 +7,4 @@ Gem::Specification.new do |spec|
   spec.executables   = ['notepad']
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'net-http', '~> 0.6'
 end
